@@ -31,18 +31,61 @@ class RestaurantViewController: UIViewController {
     
     // Create a variable called data.  (String, Bool) -> Statement, Answer
     var data: [(String, Bool)] = [
-        ("The color orange is named after the fruit.", true),
-        ("You can legally drink alcohol while driving in mississippi", true),
-        ("George Washington has wooden teeth.", false),
-        ("It is illegal to pee in the ocean in Portugal", true),
-        ("The space between your eyebrows is called the rasceta.", false),
-        ("You can lead a cow down stairs but not upstairs.", false),
-        ("The sky is blue.", true)
+        ("", true),
+        ("", true),
+        ("", false),
+        ("", true),
+        ("", false),
+        ("", false),
+        ("", true)
         
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    // -----------------------------------------
+        let zomatoKey = "19f8f67d41d482999c498e28f05a22d1"
+        let centerLatitude = 40.773988, centerLongitude = -73.946084
+        let urlString = "https://developers.zomato.com/api/v2.1/search?&lat=\(centerLatitude)&lon=\(centerLongitude)";
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let url = URL(string: urlString)!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue(zomatoKey, forHTTPHeaderField: "user_key")
+        
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            else {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
+                        if let restaurants = json["restaurants"] as? [NSDictionary] {
+                            for rest in restaurants {
+                                let restaurant = rest["restaurant"] as! NSDictionary
+                                print(restaurant["name"] as? String ?? "null")
+                                //self.restaurantName.text = restaurant["name"] as? String ?? "null"
+                                print(restaurant["cuisines"] as? String ?? "null")
+                                //self.cuisine.text = restaurant["cuisines"] as? String ?? "null"
+                                print(restaurant["average_cost_for_two"] as? NSNumber ?? "null")
+                                //self.priceLabel.text = restaurant["average_cost_for_two"] as? String ?? "null"
+                                
+                            }
+                        }
+                    }
+                }
+                catch {}
+            }
+        })
+        
+        task.resume()
+    // -----------------------------------------
         
         // Start with a 0 score
         score = 0
@@ -50,7 +93,7 @@ class RestaurantViewController: UIViewController {
         for (restaurant, answer) in self.data {
             //for each question and answer, create this view
             currentRestaurantView = RestaurantView(
-                frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width - 50),
+                frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 question: restaurant,
                 answer: answer,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
@@ -88,7 +131,7 @@ class RestaurantViewController: UIViewController {
         if self.restaurantViews.count - 1 < 0 {
             var noMoreView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width - 50),
-                question: "No More Questions :(",
+                question: "No More restaurants :(",
                 answer: false,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )

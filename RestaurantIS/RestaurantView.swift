@@ -17,6 +17,8 @@ class RestaurantView: UIView {
     var originalCenter: CGPoint!
     var restaurant: String!
     var answer: Bool!
+
+    var restaurantLabel: UILabel!
    
     //constructor for object
     //what is going to happen in the panel
@@ -56,6 +58,25 @@ class RestaurantView: UIView {
         restaurantField.layer.shouldRasterize = true
         self.addSubview(restaurantField) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
+        
+        
+        restaurantLabel = UILabel()
+        restaurantLabel.text = "restaurant label"
+        restaurantLabel.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0) //background color for text - red
+        
+        restaurantLabel.frame = CGRect(
+            x: 0.0 + self.imageMarginSpace,
+            y: (self.frame.height - self.imageMarginSpace) - (self.frame.height - (60 * self.imageMarginSpace)),
+            width: self.frame.width - (30 * self.imageMarginSpace),
+            height: self.frame.height - (60 * self.imageMarginSpace)
+            ).integral
+        
+        restaurantLabel.font = self.futura //font
+        restaurantLabel.textColor = UIColor.black //text color
+        restaurantLabel.layer.shouldRasterize = true
+        self.addSubview(restaurantLabel) //put text on the panel - layer
+        self.applyShadow() //apply shadow (function below)
+
     }
     
     required init(coder aDecoder: NSCoder) {
