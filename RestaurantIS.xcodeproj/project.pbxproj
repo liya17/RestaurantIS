@@ -13,6 +13,8 @@
 		8D67B9981E2D6C5E0081F608 /* RestaurantIS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D67B9961E2D6C5E0081F608 /* RestaurantIS.xcdatamodeld */; };
 		8D67B99A1E2D6C5E0081F608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D67B9991E2D6C5E0081F608 /* Assets.xcassets */; };
 		8D67B99D1E2D6C5E0081F608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D67B99B1E2D6C5E0081F608 /* LaunchScreen.storyboard */; };
+		8D67B9A51E2EA62D0081F608 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D67B9A41E2EA62D0081F608 /* RestaurantViewController.swift */; };
+		8D67B9A71E2EA6AB0081F608 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D67B9A61E2EA6AB0081F608 /* RestaurantView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		8D67B9991E2D6C5E0081F608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D67B99C1E2D6C5E0081F608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D67B99E1E2D6C5E0081F608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D67B9A41E2EA62D0081F608 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		8D67B9A61E2EA6AB0081F608 /* RestaurantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				8D67B98F1E2D6C5E0081F608 /* AppDelegate.swift */,
 				8D67B9911E2D6C5E0081F608 /* ViewController.swift */,
 				8D67B9931E2D6C5E0081F608 /* Main.storyboard */,
+				8D67B9A41E2EA62D0081F608 /* RestaurantViewController.swift */,
+				8D67B9A61E2EA6AB0081F608 /* RestaurantView.swift */,
 				8D67B9991E2D6C5E0081F608 /* Assets.xcassets */,
 				8D67B99B1E2D6C5E0081F608 /* LaunchScreen.storyboard */,
 				8D67B99E1E2D6C5E0081F608 /* Info.plist */,
@@ -99,6 +105,7 @@
 				TargetAttributes = {
 					8D67B98B1E2D6C5E0081F608 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9Y3JG6236H;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -140,7 +147,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D67B9921E2D6C5E0081F608 /* ViewController.swift in Sources */,
+				8D67B9A51E2EA62D0081F608 /* RestaurantViewController.swift in Sources */,
 				8D67B9901E2D6C5E0081F608 /* AppDelegate.swift in Sources */,
+				8D67B9A71E2EA6AB0081F608 /* RestaurantView.swift in Sources */,
 				8D67B9981E2D6C5E0081F608 /* RestaurantIS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,11 +271,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9Y3JG6236H;
 				INFOPLIST_FILE = RestaurantIS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chapin.RestaurantIS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -274,11 +285,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9Y3JG6236H;
 				INFOPLIST_FILE = RestaurantIS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chapin.RestaurantIS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
