@@ -13,6 +13,8 @@ class RestaurantViewController: UIViewController {
     var score: Int!
     var done: Bool = false
     
+    var restaurantNamesArray = [String]()
+    
     @IBOutlet weak var scoreView: UITextView!
     
     @IBAction func likePressed(_ sender: Any) {
@@ -74,6 +76,8 @@ class RestaurantViewController: UIViewController {
                                 let restaurant = rest["restaurant"] as! NSDictionary
                                 // Load data into local variables
                                 print(restaurant["name"] as? String ?? "null")
+                                self.restaurantNamesArray.append(restaurant["name"] as? String ?? "null")
+                                print(self.restaurantNamesArray)
                                 //self.restaurantName.text = restaurant["name"] as? String ?? "null"
                                 print(restaurant["cuisines"] as? String ?? "null")
                                 //self.cuisine.text = restaurant["cuisines"] as? String ?? "null"
