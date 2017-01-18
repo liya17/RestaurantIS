@@ -12,7 +12,7 @@ class RestaurantView: UIView {
 
     let imageMarginSpace: CGFloat = 5.0
     var futura = UIFont(name: "Futura", size: CGFloat(36.0))
-    var restaurantField: UITextView!
+    var restaurantView: UIImageView!
     var animator: UIDynamicAnimator!
     var originalCenter: CGPoint!
     var restaurant: String!
@@ -39,43 +39,44 @@ class RestaurantView: UIView {
         // Apple thing. For physics
         animator = UIDynamicAnimator(referenceView: self)
         // Question
-        restaurantField = UITextView()
-        restaurantField.text = question
-        restaurantField.isEditable = false //dont want someone to edit the restaurant info
-        restaurantField.backgroundColor = UIColor(red: 232.0/255.0, green: 186.0/255.0, blue: 188/255.0, alpha: 1.0) //background color for text - red
-        restaurantField.textAlignment = NSTextAlignment.center //center text
+        
+        //------------------------Start Image View------------------------------------
+        restaurantView = UIImageView()
+        restaurantView.backgroundColor = UIColor(red: 232.0/255.0, green: 186.0/255.0, blue: 188/255.0, alpha: 1.0) //background color for text - red
         
         //fit within the frame
-        restaurantField.frame = CGRect(
+        restaurantView.frame = CGRect(
             x: 0.0 + self.imageMarginSpace,
             y: 0.0 + self.imageMarginSpace,
             width: self.frame.width - (2 * self.imageMarginSpace),
             height: self.frame.height - (2 * self.imageMarginSpace)
             ).integral
         
-        restaurantField.font = self.futura //font
-        restaurantField.textColor = UIColor.black //text color
-        restaurantField.layer.shouldRasterize = true
-        self.addSubview(restaurantField) //put text on the panel - layer
+        restaurantView.layer.shouldRasterize = true
+        self.addSubview(restaurantView) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
+        //--------------------------End Image View------------------------------------
         
         
+        //------------------------Start Restaurant Label------------------------------------
         restaurantLabel = UILabel()
         restaurantLabel.text = "restaurant label"
-        restaurantLabel.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0) //background color for text - red
+        //restaurantLabel.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0) //background color for text - red
         
         restaurantLabel.frame = CGRect(
-            x: 0.0 + self.imageMarginSpace,
+            x: 5.0 + self.imageMarginSpace,
             y: (self.frame.height - self.imageMarginSpace) - (self.frame.height - (60 * self.imageMarginSpace)),
             width: self.frame.width - (30 * self.imageMarginSpace),
             height: self.frame.height - (60 * self.imageMarginSpace)
             ).integral
         
         restaurantLabel.font = self.futura //font
+        restaurantLabel.font = restaurantLabel.font.withSize(20)
         restaurantLabel.textColor = UIColor.black //text color
         restaurantLabel.layer.shouldRasterize = true
         self.addSubview(restaurantLabel) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
+        //-------------------------End Restaurant Label------------------------------------
 
     }
     

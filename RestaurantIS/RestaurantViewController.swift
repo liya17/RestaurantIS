@@ -41,10 +41,13 @@ class RestaurantViewController: UIViewController {
         
     ]
     
+    //var restaurantList: [(String,Bool)] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    // -----------------------------------------
+    // ------------------------------START ZOMATO API ---------------------------------------
         let zomatoKey = "19f8f67d41d482999c498e28f05a22d1"
         let centerLatitude = 40.773988, centerLongitude = -73.946084
         let urlString = "https://developers.zomato.com/api/v2.1/search?&lat=\(centerLatitude)&lon=\(centerLongitude)";
@@ -76,6 +79,7 @@ class RestaurantViewController: UIViewController {
                                 print(restaurant["average_cost_for_two"] as? NSNumber ?? "null")
                                 //self.priceLabel.text = restaurant["average_cost_for_two"] as? String ?? "null"
                                 
+                                //restaurantList.append(rest, true)
                             }
                         }
                     }
@@ -85,7 +89,7 @@ class RestaurantViewController: UIViewController {
         })
         
         task.resume()
-    // -----------------------------------------
+    // -----------------------------------END ZOMATO API------------------------------------
         
         // Start with a 0 score
         score = 0
@@ -118,7 +122,7 @@ class RestaurantViewController: UIViewController {
         // If its the right answer, set the score
         if self.currentRestaurantView.answer == answer && !self.done{
             self.score = self.score + 1
-            self.scoreView.text = "Score: \(self.score)" //adding text to text field
+            self.scoreView.text = "Liked: \(self.score)" //adding text to text field
         }
         
         // Run the swipe animation
@@ -130,7 +134,7 @@ class RestaurantViewController: UIViewController {
         //if out of questions make another restaurant view and say no more restaurants
         if self.restaurantViews.count - 1 < 0 {
             var noMoreView = RestaurantView(
-                frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width - 50),
+                frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 question: "No More restaurants :(",
                 answer: false,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
