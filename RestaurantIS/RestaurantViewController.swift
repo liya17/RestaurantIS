@@ -72,6 +72,7 @@ class RestaurantViewController: UIViewController {
                         if let restaurants = json["restaurants"] as? [NSDictionary] {
                             for rest in restaurants {
                                 let restaurant = rest["restaurant"] as! NSDictionary
+                                // Load data into local variables
                                 print(restaurant["name"] as? String ?? "null")
                                 //self.restaurantName.text = restaurant["name"] as? String ?? "null"
                                 print(restaurant["cuisines"] as? String ?? "null")
@@ -82,6 +83,8 @@ class RestaurantViewController: UIViewController {
                                 //restaurantList.append(rest, true)
                             }
                         }
+                        // Display first restaurant
+                        
                     }
                 }
                 catch {}
