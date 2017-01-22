@@ -14,6 +14,8 @@ class RestaurantViewController: UIViewController {
     var done: Bool = false
     
     var restaurantNamesArray = [String]()
+    var restaurantCuisineArray = [String]()
+    var restaurantPriceArray  = [String]()
     
     @IBOutlet weak var scoreView: UITextView!
     
@@ -29,18 +31,12 @@ class RestaurantViewController: UIViewController {
     
     var restaurantViews: [RestaurantView] = []
     var currentRestaurantView: RestaurantView!
-
     
     // Create a variable called data.  (String, Bool) -> Statement, Answer
-    var data: [(String, Bool)] = [
-        ("", true),
-        ("", true),
-        ("", false),
-        ("", true),
-        ("", false),
-        ("", false),
-        ("", true)
-        
+    
+    var data: [(String)] = [
+//        (""),
+//        (""),
     ]
     
     //var restaurantList: [(String,Bool)] = []
@@ -75,19 +71,29 @@ class RestaurantViewController: UIViewController {
                             for rest in restaurants {
                                 let restaurant = rest["restaurant"] as! NSDictionary
                                 // Load data into local variables
-                                print(restaurant["name"] as? String ?? "null")
+                                //print(restaurant["name"] as? String ?? "null")
+                                
                                 self.restaurantNamesArray.append(restaurant["name"] as? String ?? "null")
-                                print(self.restaurantNamesArray)
+                                //print(self.restaurantNamesArray)
+                                
+                                //self.data.append()
+                                
                                 //self.restaurantName.text = restaurant["name"] as? String ?? "null"
-                                print(restaurant["cuisines"] as? String ?? "null")
+                                //print(restaurant["cuisines"] as? String ?? "null")
+                                //print(self.restaurantCuisineArray)
                                 //self.cuisine.text = restaurant["cuisines"] as? String ?? "null"
-                                print(restaurant["average_cost_for_two"] as? NSNumber ?? "null")
+
+                                //print(restaurant["average_cost_for_two"] as? NSNumber ?? "null")
+                                //print(self.restaurantPriceArray)
+                                
                                 //self.priceLabel.text = restaurant["average_cost_for_two"] as? String ?? "null"
                                 
                                 //restaurantList.append(rest, true)
                             }
                         }
                         // Display first restaurant
+                        self.data = self.restaurantNamesArray
+                        self.panels()
                         
                     }
                 }
@@ -97,16 +103,19 @@ class RestaurantViewController: UIViewController {
         
         task.resume()
     // -----------------------------------END ZOMATO API------------------------------------
-        
+    }
+
+    func panels() {
         // Start with a 0 score
         score = 0
         
-        for (restaurant, answer) in self.data {
+        print(data)
+        for (restaurant) in self.data {
             //for each question and answer, create this view
             currentRestaurantView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 question: restaurant,
-                answer: answer,
+                //answer: answer,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(currentRestaurantView)
@@ -116,13 +125,12 @@ class RestaurantViewController: UIViewController {
         for restaurantView in self.restaurantViews {
             self.view.addSubview(restaurantView)
         }
-
+        
         // Add Pan Gesture Recognizer
         let pan = UIPanGestureRecognizer(target: self, action: #selector(RestaurantViewController.handlePan(_:)))
         self.view.addGestureRecognizer(pan)
-
     }
-
+    
     //when the answer is picked...
     func determineJudgement(_ answer: Bool) {
         
@@ -143,7 +151,7 @@ class RestaurantViewController: UIViewController {
             var noMoreView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 question: "No More restaurants :(",
-                answer: false,
+                //answer: false,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(noMoreView)

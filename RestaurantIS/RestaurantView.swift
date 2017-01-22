@@ -12,7 +12,7 @@ class RestaurantView: UIView {
 
     let imageMarginSpace: CGFloat = 5.0
     var futura = UIFont(name: "Futura", size: CGFloat(36.0))
-    var restaurantView: UIImageView!
+    var restaurantView: UITextView!
     var animator: UIDynamicAnimator!
     var originalCenter: CGPoint!
     var restaurant: String!
@@ -22,11 +22,11 @@ class RestaurantView: UIView {
    
     //constructor for object
     //what is going to happen in the panel
-    init(frame: CGRect, question: String, answer: Bool, center: CGPoint) {
+    init(frame: CGRect, question: String, /*answer: Bool,*/ center: CGPoint) {
         // Gives all the stuff Apple provides
         super.init(frame: frame)
         self.center = center
-        self.answer = answer
+        //self.answer = answer
         //self.restaurant = restaurant
        
         // Set the background to white
@@ -40,8 +40,8 @@ class RestaurantView: UIView {
         animator = UIDynamicAnimator(referenceView: self)
         // Question
         
-        //------------------------Start Image View------------------------------------
-        restaurantView = UIImageView()
+        //------------------------Start Text View------------------------------------
+        restaurantView = UITextView()
         restaurantView.backgroundColor = UIColor(red: 232.0/255.0, green: 186.0/255.0, blue: 188/255.0, alpha: 1.0) //background color for text - red
         
         //fit within the frame
