@@ -110,6 +110,10 @@ class RestaurantViewController: UIViewController {
         score = 0
         
         print(data)
+        
+        print("hello")
+        
+        //error in here
         for (restaurant) in self.data {
             //for each question and answer, create this view
             currentRestaurantView = RestaurantView(
@@ -120,7 +124,8 @@ class RestaurantViewController: UIViewController {
             )
             self.restaurantViews.append(currentRestaurantView)
         }
-        
+        //
+
         //for all the restaurantViews add them to the panel
         for restaurantView in self.restaurantViews {
             self.view.addSubview(restaurantView)
