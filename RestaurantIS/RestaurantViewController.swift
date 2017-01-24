@@ -71,7 +71,7 @@ class RestaurantViewController: UIViewController {
                             for rest in restaurants {
                                 let restaurant = rest["restaurant"] as! NSDictionary
                                 // Load data into local variables
-                                //print(restaurant["name"] as? String ?? "null")
+                                // print(restaurant["name"] as? String ?? "null")
                                 
                                 self.restaurantNamesArray.append(restaurant["name"] as? String ?? "null")
                                 //print(self.restaurantNamesArray)
@@ -90,10 +90,19 @@ class RestaurantViewController: UIViewController {
                                 
                                 //restaurantList.append(rest, true)
                             }
+                            // Display first restaurant
+                            print("Data loaded, proceeding")
+                            self.data = self.restaurantNamesArray
+                            print("self.data = self.restaurantNamesArray")
+                            DispatchQueue.main.async {
+                                self.panels()
+                            }
                         }
-                        // Display first restaurant
-                        self.data = self.restaurantNamesArray
-                        self.panels()
+//                        // Display first restaurant
+//                        print("Data loaded, proceeding")
+//                        self.data = self.restaurantNamesArray
+//                        print("self.data = self.restaurantNamesArray")
+//                        self.panels()
                         
                     }
                 }
@@ -106,15 +115,18 @@ class RestaurantViewController: UIViewController {
     }
 
     func panels() {
+        print("self.panels called")
         // Start with a 0 score
         score = 0
         
-        print(data)
+        // print(data)
+        print(self.restaurantNamesArray)
         
-        print("hello")
+        // print("hello")
         
         //error in here
         for (restaurant) in self.data {
+            // print(restaurant)
             //for each question and answer, create this view
             currentRestaurantView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
@@ -124,7 +136,7 @@ class RestaurantViewController: UIViewController {
             )
             self.restaurantViews.append(currentRestaurantView)
         }
-        //
+        
 
         //for all the restaurantViews add them to the panel
         for restaurantView in self.restaurantViews {
@@ -140,10 +152,10 @@ class RestaurantViewController: UIViewController {
     func determineJudgement(_ answer: Bool) {
         
         // If its the right answer, set the score
-        if self.currentRestaurantView.answer == answer && !self.done{
-            self.score = self.score + 1
-            self.scoreView.text = "Liked: \(self.score)" //adding text to text field
-        }
+//        if self.currentRestaurantView.answer == answer && !self.done{
+//            self.score = self.score + 1
+//            self.scoreView.text = "Liked: \(self.score)" //adding text to text field
+//        }
         
         // Run the swipe animation
         self.currentRestaurantView.swipe(answer)
