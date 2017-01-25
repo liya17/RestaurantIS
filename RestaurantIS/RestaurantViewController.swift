@@ -22,6 +22,8 @@ class RestaurantViewController: UIViewController {
     @IBAction func likePressed(_ sender: Any) {
         print("This button is pressed")
         self.determineJudgement(true)
+        self.score = self.score + 1
+        self.scoreView.text = "Liked: \(self.score)"
     }
     
     @IBAction func dislikePressed(_ sender: Any) {
@@ -74,19 +76,9 @@ class RestaurantViewController: UIViewController {
                                 // print(restaurant["name"] as? String ?? "null")
                                 
                                 self.restaurantNamesArray.append(restaurant["name"] as? String ?? "null")
-                                //print(self.restaurantNamesArray)
-                                
-                                //self.restaurantName.text = restaurant["name"] as? String ?? "null"
-                                //print(restaurant["cuisines"] as? String ?? "null")
-                                //print(self.restaurantCuisineArray)
+ 
                                 self.restaurantCuisineArray.append(restaurant["cuisines"] as? String ?? "null")
 
-                                //print(restaurant["average_cost_for_two"] as? NSNumber ?? "null")
-                                //print(self.restaurantPriceArray)
-                                
-                                //self.priceLabel.text = restaurant["average_cost_for_two"] as? String ?? "null"
-                                
-                                //restaurantList.append(rest, true)
                             }
                             // Display first restaurant
                             //print("Data loaded, proceeding")
@@ -96,12 +88,6 @@ class RestaurantViewController: UIViewController {
                                 self.panels()
                             }
                         }
-//                        // Display first restaurant
-//                        print("Data loaded, proceeding")
-//                        self.data = self.restaurantNamesArray
-//                        print("self.data = self.restaurantNamesArray")
-//                        self.panels()
-                        
                     }
                 }
                 catch {}
@@ -125,7 +111,6 @@ class RestaurantViewController: UIViewController {
             currentRestaurantView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: restaurant,
-                //answer: answer,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(currentRestaurantView)
@@ -183,6 +168,8 @@ class RestaurantViewController: UIViewController {
             //did they move their finger enough
             if self.currentRestaurantView.center.x / self.view.bounds.maxX > 0.8 {
                 self.determineJudgement(true)
+                self.score = self.score + 1
+                self.scoreView.text = "Liked: \(self.score)"
             }
             else if self.currentRestaurantView.center.x / self.view.bounds.maxX < 0.2 {
                 self.determineJudgement(false)
