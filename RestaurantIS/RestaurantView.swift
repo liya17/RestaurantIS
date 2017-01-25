@@ -19,15 +19,16 @@ class RestaurantView: UIView {
     var answer: Bool!
 
     var restaurantLabel: UILabel!
-   
+    var cuisineLabel: UILabel!
     //constructor for object
     //what is going to happen in the panel
-    init(frame: CGRect, question: String, /*answer: Bool,*/ center: CGPoint) {
+    init(frame: CGRect, restaurant: String, /*answer: Bool,*/ center: CGPoint) {
         // Gives all the stuff Apple provides
         super.init(frame: frame)
         self.center = center
         //self.answer = answer
-        //self.restaurant = restaurant
+        self.restaurant = restaurant
+        //self.restCuisine = restCuisine
        
         // Set the background to white
         self.backgroundColor = UIColor.white
@@ -60,14 +61,15 @@ class RestaurantView: UIView {
         
         //------------------------Start Restaurant Label------------------------------------
         restaurantLabel = UILabel()
-        restaurantLabel.text = "restaurant label"
+        //restaurantLabel.text = "restaurant label"
+        restaurantLabel.text = restaurant
         //restaurantLabel.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0) //background color for text - red
         
         restaurantLabel.frame = CGRect(
             x: 5.0 + self.imageMarginSpace,
             y: (self.frame.height - self.imageMarginSpace) - (self.frame.height - (60 * self.imageMarginSpace)),
-            width: self.frame.width - (30 * self.imageMarginSpace),
-            height: self.frame.height - (60 * self.imageMarginSpace)
+            width: self.frame.width /*- (30 * self.imageMarginSpace)*/,
+            height: self.frame.height - (70 * self.imageMarginSpace)
             ).integral
         
         restaurantLabel.font = self.futura //font
@@ -77,6 +79,24 @@ class RestaurantView: UIView {
         self.addSubview(restaurantLabel) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
         //-------------------------End Restaurant Label------------------------------------
+        
+        //-------------------------Start Cuisine Label------------------------------------
+        cuisineLabel = UILabel()
+        cuisineLabel.text = "hey"
+        
+        cuisineLabel.frame = CGRect(
+            x: 5.0 + self.imageMarginSpace,
+            y: (self.frame.height - self.imageMarginSpace) - (self.frame.height - (60 * self.imageMarginSpace)),
+            width: self.frame.width /*- (30 * self.imageMarginSpace)*/,
+            height: self.frame.height - (58 * self.imageMarginSpace)
+            ).integral
+        
+        cuisineLabel.font = self.futura //font
+        cuisineLabel.font = cuisineLabel.font.withSize(20)
+        cuisineLabel.textColor = UIColor.black //text color
+        cuisineLabel.layer.shouldRasterize = true
+        self.addSubview(cuisineLabel) //put text on the panel - layer
+        self.applyShadow() //apply shadow (function below)
 
     }
     

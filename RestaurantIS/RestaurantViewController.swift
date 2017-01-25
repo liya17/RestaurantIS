@@ -34,10 +34,10 @@ class RestaurantViewController: UIViewController {
     
     // Create a variable called data.  (String, Bool) -> Statement, Answer
     
-    var data: [(String)] = [
+//    var data: [(String)] = [
 //        (""),
 //        (""),
-    ]
+//    ]
     
     //var restaurantList: [(String,Bool)] = []
     
@@ -76,12 +76,10 @@ class RestaurantViewController: UIViewController {
                                 self.restaurantNamesArray.append(restaurant["name"] as? String ?? "null")
                                 //print(self.restaurantNamesArray)
                                 
-                                //self.data.append()
-                                
                                 //self.restaurantName.text = restaurant["name"] as? String ?? "null"
                                 //print(restaurant["cuisines"] as? String ?? "null")
                                 //print(self.restaurantCuisineArray)
-                                //self.cuisine.text = restaurant["cuisines"] as? String ?? "null"
+                                self.restaurantCuisineArray.append(restaurant["cuisines"] as? String ?? "null")
 
                                 //print(restaurant["average_cost_for_two"] as? NSNumber ?? "null")
                                 //print(self.restaurantPriceArray)
@@ -91,9 +89,9 @@ class RestaurantViewController: UIViewController {
                                 //restaurantList.append(rest, true)
                             }
                             // Display first restaurant
-                            print("Data loaded, proceeding")
-                            self.data = self.restaurantNamesArray
-                            print("self.data = self.restaurantNamesArray")
+                            //print("Data loaded, proceeding")
+                            //self.data = self.restaurantNamesArray
+                            //print("self.data = self.restaurantNamesArray")
                             DispatchQueue.main.async {
                                 self.panels()
                             }
@@ -119,25 +117,20 @@ class RestaurantViewController: UIViewController {
         // Start with a 0 score
         score = 0
         
-        // print(data)
-        print(self.restaurantNamesArray)
-        
-        // print("hello")
-        
         //error in here
-        for (restaurant) in self.data {
+        for (restaurant) in self.restaurantNamesArray {
             // print(restaurant)
             //for each question and answer, create this view
+            //print(restaurant)
             currentRestaurantView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
-                question: restaurant,
+                restaurant: restaurant,
                 //answer: answer,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(currentRestaurantView)
         }
         
-
         //for all the restaurantViews add them to the panel
         for restaurantView in self.restaurantViews {
             self.view.addSubview(restaurantView)
@@ -167,7 +160,7 @@ class RestaurantViewController: UIViewController {
         if self.restaurantViews.count - 1 < 0 {
             var noMoreView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
-                question: "No More restaurants :(",
+                restaurant: "No More restaurants :(",
                 //answer: false,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
