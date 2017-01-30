@@ -24,6 +24,8 @@ class RestaurantViewController: UIViewController {
         self.determineJudgement(true)
         self.score = self.score + 1
         self.scoreView.text = "Liked: \(self.score)"
+        self.determineScore()
+        
     }
     
     @IBAction func dislikePressed(_ sender: Any) {
@@ -160,6 +162,25 @@ class RestaurantViewController: UIViewController {
         
     }
     
+    func determineScore(){
+        if self.score%3 == 0{
+            let refreshAlert = UIAlertController(title: "You've liked 3 Restaurants", message: "Keep Swiping?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
+                print("Segue to next view controller")
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! ViewController
+                self.present(vc, animated: true, completion: nil)
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Keep swiping")
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+        }
+    }
+    
+    
     func handlePan(_ gesture: UIPanGestureRecognizer) {
         // Is this gesture state finished??
         if gesture.state == UIGestureRecognizerState.ended {
@@ -170,6 +191,7 @@ class RestaurantViewController: UIViewController {
                 self.determineJudgement(true)
                 self.score = self.score + 1
                 self.scoreView.text = "Liked: \(self.score)"
+                self.determineScore()
             }
             else if self.currentRestaurantView.center.x / self.view.bounds.maxX < 0.2 {
                 self.determineJudgement(false)
