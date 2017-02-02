@@ -162,14 +162,19 @@ class RestaurantViewController: UIViewController {
         
     }
     
+    func transferSegue() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! ViewController
+        self.present(vc, animated: true, completion: nil)
+        //vc.tableViewCell.chosenNameLabel.text = "hello"
+    }
+    
     func determineScore(){
         if self.score%3 == 0{
             let refreshAlert = UIAlertController(title: "You've liked 3 Restaurants", message: "Keep Swiping?", preferredStyle: UIAlertControllerStyle.alert)
             
             refreshAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
                 print("Segue to next view controller")
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! ViewController
-                self.present(vc, animated: true, completion: nil)
+                self.transferSegue()
             }))
             
             refreshAlert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -192,6 +197,11 @@ class RestaurantViewController: UIViewController {
                 self.score = self.score + 1
                 self.scoreView.text = "Liked: \(self.score)"
                 self.determineScore()
+                var currentName = self.currentRestaurantView.restaurantLabel.text
+                
+               // self.currentRestaurantView.restaurantLabel
+                //self.transferInfo(info: currentName!)
+                //self.transferSegue()
             }
             else if self.currentRestaurantView.center.x / self.view.bounds.maxX < 0.2 {
                 self.determineJudgement(false)
@@ -205,7 +215,6 @@ class RestaurantViewController: UIViewController {
         self.currentRestaurantView.center = CGPoint(x: self.currentRestaurantView!.center.x + translation.x, y: self.currentRestaurantView!.center.y + translation.y)
         gesture.setTranslation(CGPoint.zero, in: self.view) //reset
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
