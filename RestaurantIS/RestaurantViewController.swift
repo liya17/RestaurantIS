@@ -106,13 +106,17 @@ class RestaurantViewController: UIViewController {
         score = 0
         
         //error in here
-        for (restaurant) in self.restaurantNamesArray {
+        for i in 0...restaurantNamesArray.count-1 {
+        // for (restaurant) in self.restaurantNamesArray {
+            let restaurant = restaurantNamesArray[i]
+            let cuisine = restaurantCuisineArray[i]
             // print(restaurant)
             //for each question and answer, create this view
             //print(restaurant)
             currentRestaurantView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: restaurant,
+                cuisine: cuisine,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(currentRestaurantView)
@@ -122,6 +126,24 @@ class RestaurantViewController: UIViewController {
         for restaurantView in self.restaurantViews {
             self.view.addSubview(restaurantView)
         }
+        /**
+        for (cuisine) in self.restaurantCuisineArray {
+            // print(cuisine)
+            //for each question and answer, create this view
+            //print(cuisine)
+            currentRestaurantView = RestaurantView(
+                frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
+                restaurant: cuisine,
+                cuisine: cuisine,
+                center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
+            )
+            self.restaurantViews.append(currentRestaurantView)
+        }
+        
+        //for all the restaurantViews add them to the panel
+        for restaurantView in self.restaurantViews {
+            self.view.addSubview(restaurantView)
+        } **/
         
         // Add Pan Gesture Recognizer
         let pan = UIPanGestureRecognizer(target: self, action: #selector(RestaurantViewController.handlePan(_:)))
@@ -148,6 +170,7 @@ class RestaurantViewController: UIViewController {
             var noMoreView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: "No More restaurants :(",
+                cuisine: "None",
                 //answer: false,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
