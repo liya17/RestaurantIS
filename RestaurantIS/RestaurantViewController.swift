@@ -15,7 +15,7 @@ class RestaurantViewController: UIViewController {
     
     var restaurantNamesArray = [String]()
     var restaurantCuisineArray = [String]()
-    var restaurantPriceArray  = [String]()
+    var restaurantPriceArray  = [Double]()
     
     @IBOutlet weak var scoreView: UITextView!
     
@@ -23,7 +23,7 @@ class RestaurantViewController: UIViewController {
         print("This button is pressed")
         self.determineJudgement(true)
         self.score = self.score + 1
-        self.scoreView.text = "Liked: \(self.score)"
+//self.scoreView.text = "Liked: \(self.score)"
         self.determineScore()
         
     }
@@ -80,6 +80,8 @@ class RestaurantViewController: UIViewController {
                                 self.restaurantNamesArray.append(restaurant["name"] as? String ?? "null")
  
                                 self.restaurantCuisineArray.append(restaurant["cuisines"] as? String ?? "null")
+                                
+                                self.restaurantPriceArray.append(restaurant["average_cost_for_two"] as? Double ?? 0)
 
                             }
                             // Display first restaurant
@@ -110,6 +112,7 @@ class RestaurantViewController: UIViewController {
         // for (restaurant) in self.restaurantNamesArray {
             let restaurant = restaurantNamesArray[i]
             let cuisine = restaurantCuisineArray[i]
+            let price = restaurantPriceArray[i]
             // print(restaurant)
             //for each question and answer, create this view
             //print(restaurant)
@@ -117,6 +120,7 @@ class RestaurantViewController: UIViewController {
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: restaurant,
                 cuisine: cuisine,
+                price: price,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(currentRestaurantView)
@@ -171,6 +175,7 @@ class RestaurantViewController: UIViewController {
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: "No More restaurants :(",
                 cuisine: "None",
+                price: 0,
                 //answer: false,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )

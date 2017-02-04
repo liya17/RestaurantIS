@@ -18,18 +18,22 @@ class RestaurantView: UIView {
     var restaurant: String!
     var answer: Bool!
     var cuisine: String!
+    var price: Double!
 
     var restaurantLabel: UILabel!
     var cuisineLabel: UILabel!
+    var priceLabel: UILabel!
+    
     //constructor for object
     //what is going to happen in the panel
-    init(frame: CGRect, restaurant: String, cuisine: String, /*answer: Bool,*/ center: CGPoint) {
+    init(frame: CGRect, restaurant: String, cuisine: String, price: Double, center: CGPoint) {
         // Gives all the stuff Apple provides
         super.init(frame: frame)
         self.center = center
         //self.answer = answer
         self.restaurant = restaurant
         self.cuisine = cuisine
+        self.price = price
         //self.restCuisine = restCuisine
        
         // Set the background to white
@@ -59,7 +63,6 @@ class RestaurantView: UIView {
         self.addSubview(restaurantView) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
         //--------------------------End Image View------------------------------------
-        
         
         //------------------------Start Restaurant Label------------------------------------
         restaurantLabel = UILabel()
@@ -99,6 +102,28 @@ class RestaurantView: UIView {
         cuisineLabel.layer.shouldRasterize = true
         self.addSubview(cuisineLabel) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
+         //-------------------------End Cuisine Label------------------------------------
+        
+         //-------------------------Start Price Label------------------------------------
+        priceLabel = UILabel()
+        let priceDouble : Double = price 
+        let priceString = String(priceDouble)
+        priceLabel.text = "$" + priceString
+        
+        priceLabel.frame = CGRect(
+            x: restaurantLabel.frame.minX + 275,
+            y: restaurantLabel.frame.maxY - 60,
+            width: self.frame.width /*- (30 * self.imageMarginSpace)*/,
+            height: self.frame.height - (58 * self.imageMarginSpace)
+            ).integral
+        
+        priceLabel.font = self.futura //font
+        priceLabel.font = priceLabel.font.withSize(20)
+        priceLabel.textColor = UIColor.black //text color
+        priceLabel.layer.shouldRasterize = true
+        self.addSubview(priceLabel) //put text on the panel - layer
+        self.applyShadow() //apply shadow (function below)
+        //-------------------------End Cuisine Label------------------------------------
 
     }
     
