@@ -72,7 +72,10 @@ class RestaurantView: UIView {
         
         restaurantLabel.frame = CGRect(
             x: 5.0 + self.imageMarginSpace,
-            y: (self.frame.height - self.imageMarginSpace) - (self.frame.height - (60 * self.imageMarginSpace)),
+            //y: restaurantView.frame.maxY + 105,
+            y: restaurantView.frame.maxY - 11*self.imageMarginSpace,
+           // y: cuisineLabel.frame.maxY + 10,
+            //y: self.imageMarginSpace + restaurantView.frame.height + 110/*(self.frame.height - self.imageMarginSpace) - (self.frame.height - (60 * self.imageMarginSpace))*/,
             width: self.frame.width /*- (30 * self.imageMarginSpace)*/,
             height: self.frame.height - (70 * self.imageMarginSpace)
             ).integral
@@ -80,9 +83,11 @@ class RestaurantView: UIView {
         restaurantLabel.font = self.futura //font
         restaurantLabel.font = restaurantLabel.font.withSize(20)
         restaurantLabel.textColor = UIColor.black //text color
+        //restaurantLabel.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 188/255.0, alpha: 1.0) //background color for text - red
         restaurantLabel.layer.shouldRasterize = true
         self.addSubview(restaurantLabel) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
+        
         //-------------------------End Restaurant Label------------------------------------
         
         //-------------------------Start Cuisine Label------------------------------------
@@ -91,15 +96,18 @@ class RestaurantView: UIView {
         
         cuisineLabel.frame = CGRect(
             x: restaurantLabel.frame.minX,
-            y: restaurantLabel.frame.maxY - 60,
+            y: restaurantView.frame.maxY - 6*self.imageMarginSpace,
+           // y: restaurantLabel.frame.height + 10, //restaurantLabel.frame.maxY - 60,
             width: self.frame.width /*- (30 * self.imageMarginSpace)*/,
-            height: self.frame.height - (58 * self.imageMarginSpace)
+            height: self.frame.height - (70 * self.imageMarginSpace)
             ).integral
         
         cuisineLabel.font = self.futura //font
         cuisineLabel.font = cuisineLabel.font.withSize(20)
         cuisineLabel.textColor = UIColor.black //text color
         cuisineLabel.layer.shouldRasterize = true
+        //cuisineLabel.backgroundColor = UIColor(red: 255.0/255.0, green: 186.0/255.0, blue: 188/255.0, alpha: 1.0) //background color for text - red
+
         self.addSubview(cuisineLabel) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
          //-------------------------End Cuisine Label------------------------------------
@@ -111,10 +119,11 @@ class RestaurantView: UIView {
         priceLabel.text = "$" + priceString
         
         priceLabel.frame = CGRect(
-            x: restaurantLabel.frame.minX + 275,
-            y: restaurantLabel.frame.maxY - 60,
+            //x: restaurantLabel.frame.minX + 215,
+            x: restaurantView.frame.maxX - 70,
+            y: restaurantView.frame.maxY - 6*self.imageMarginSpace,
             width: self.frame.width /*- (30 * self.imageMarginSpace)*/,
-            height: self.frame.height - (58 * self.imageMarginSpace)
+            height: self.frame.height - (70 * self.imageMarginSpace)
             ).integral
         
         priceLabel.font = self.futura //font

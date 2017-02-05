@@ -191,9 +191,13 @@ class RestaurantViewController: UIViewController {
     }
     
     func transferSegue() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! ViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedViewController
         self.present(vc, animated: true, completion: nil)
         //vc.tableViewCell.chosenNameLabel.text = "hello"
+    }
+    
+    func transferInfo() {
+        
     }
     
     func determineScore(){
