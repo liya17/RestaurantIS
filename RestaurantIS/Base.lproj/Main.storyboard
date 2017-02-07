@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,8 +28,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mly-uO-QDq">
                                 <rect key="frame" x="31" y="492" width="140" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="x"/>
-                                <state key="highlighted" image="xh"/>
+                                <state key="normal" image="xnew"/>
+                                <state key="highlighted" image="chnew"/>
                                 <connections>
                                     <action selector="dislikePressed:" destination="yUi-sC-er7" eventType="touchUpInside" id="yn1-uv-RPn"/>
                                 </connections>
@@ -84,18 +85,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M3A-2T-fxT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M3A-2T-fxT">
                                             <rect key="frame" x="8" y="29" width="140" height="140"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="tXk-4P-rag"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBl-ZT-1rR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBl-ZT-1rR">
                                             <rect key="frame" x="156" y="29" width="211" height="69"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hBl-ZT-1rR" firstAttribute="trailing" secondItem="DmU-9Y-sJ6" secondAttribute="trailingMargin" id="3No-Fl-oGW"/>
+                                        <constraint firstItem="hBl-ZT-1rR" firstAttribute="top" secondItem="M3A-2T-fxT" secondAttribute="top" id="6uL-bs-H04"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hBl-ZT-1rR" secondAttribute="bottom" constant="93.5" id="JiE-KC-8gc"/>
+                                        <constraint firstItem="M3A-2T-fxT" firstAttribute="centerY" secondItem="DmU-9Y-sJ6" secondAttribute="centerY" id="Loi-FI-goj"/>
+                                        <constraint firstItem="M3A-2T-fxT" firstAttribute="top" secondItem="DmU-9Y-sJ6" secondAttribute="topMargin" constant="21" id="Qug-ym-gw5"/>
+                                        <constraint firstItem="M3A-2T-fxT" firstAttribute="leading" secondItem="DmU-9Y-sJ6" secondAttribute="leadingMargin" id="iZ3-z6-msI"/>
+                                        <constraint firstItem="hBl-ZT-1rR" firstAttribute="leading" secondItem="M3A-2T-fxT" secondAttribute="trailing" constant="8" symbolic="YES" id="pBb-xr-p65"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="hBl-ZT-1rR" id="Sdo-DC-80w"/>
@@ -118,7 +129,7 @@
         <image name="background" width="368" height="654"/>
         <image name="c" width="174" height="180"/>
         <image name="ch" width="174" height="180"/>
-        <image name="x" width="174" height="180"/>
-        <image name="xh" width="174" height="180"/>
+        <image name="chnew" width="174" height="180"/>
+        <image name="xnew" width="174" height="180"/>
     </resources>
 </document>
