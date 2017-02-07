@@ -37,8 +37,8 @@ class RestaurantView: UIView {
         //self.restCuisine = restCuisine
        
         // Set the background to white
-        self.backgroundColor = UIColor.white
-        self.layer.shouldRasterize = true
+//        self.backgroundColor = UIColor.white
+//        self.layer.shouldRasterize = true
         
         // Original -- if user does not swipe the image fully the image will go back to the original center
         self.originalCenter = center
@@ -54,7 +54,7 @@ class RestaurantView: UIView {
         //fit within the frame
         restaurantView.frame = CGRect(
             x: 0.0 + self.imageMarginSpace,
-            y: 0.0 + self.imageMarginSpace,
+            y: 60.0 + self.imageMarginSpace,
             width: self.frame.width - (2 * self.imageMarginSpace),
             height: self.frame.height - (2 * self.imageMarginSpace)
             ).integral
@@ -142,10 +142,10 @@ class RestaurantView: UIView {
     
     //apply shadow to image
     func applyShadow() {
-        self.layer.cornerRadius = 6.0
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowOffset = CGSize(width: 0, height: -3)
+//        self.layer.cornerRadius = 6.0
+//        self.layer.shadowColor = UIColor.black.cgColor
+//        self.layer.shadowOpacity = 0.3
+//        self.layer.shadowOffset = CGSize(width: 0, height: -3)
     }
     
     //swipe restaurant off the screen

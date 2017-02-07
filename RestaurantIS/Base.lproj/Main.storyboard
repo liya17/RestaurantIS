@@ -21,82 +21,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="UnW-C9-rbl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="UnW-C9-rbl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d3-6q-Ay3">
-                                <rect key="frame" x="252" y="549" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mly-uO-QDq">
+                                <rect key="frame" x="31" y="492" width="140" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Like"/>
-                                <connections>
-                                    <action selector="likePressed:" destination="yUi-sC-er7" eventType="touchUpInside" id="fkw-Mw-y5P"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mly-uO-QDq">
-                                <rect key="frame" x="91" y="549" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Dislike"/>
+                                <state key="normal" image="x"/>
+                                <state key="highlighted" image="xh"/>
                                 <connections>
                                     <action selector="dislikePressed:" destination="yUi-sC-er7" eventType="touchUpInside" id="yn1-uv-RPn"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Liked:" translatesAutoresizingMaskIntoConstraints="NO" id="gCu-V3-8Gf">
-                                <rect key="frame" x="84" y="456" width="206" height="68"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5B-4c-GNN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Yvp-Lb-mJl"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="FEEDER" id="SqM-7T-WGl"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d3-6q-Ay3">
+                                <rect key="frame" x="202" y="492" width="140" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <state key="normal" image="c"/>
+                                <state key="highlighted" image="ch"/>
+                                <connections>
+                                    <action selector="likePressed:" destination="yUi-sC-er7" eventType="touchUpInside" id="fkw-Mw-y5P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UnW-C9-rbl" firstAttribute="top" secondItem="L5B-4c-GNN" secondAttribute="top" id="Fo1-OF-PsF"/>
+                            <constraint firstItem="L5B-4c-GNN" firstAttribute="top" secondItem="Rhw-yn-kFX" secondAttribute="top" id="QQQ-xz-yTn"/>
+                            <constraint firstItem="L5B-4c-GNN" firstAttribute="leading" secondItem="Rhw-yn-kFX" secondAttribute="leading" id="Xg1-z1-CLv"/>
+                            <constraint firstItem="UnW-C9-rbl" firstAttribute="bottom" secondItem="jwb-JR-bbX" secondAttribute="top" id="eJj-9H-6e1"/>
+                            <constraint firstItem="UnW-C9-rbl" firstAttribute="leading" secondItem="L5B-4c-GNN" secondAttribute="leading" id="grx-rf-ama"/>
+                            <constraint firstItem="UnW-C9-rbl" firstAttribute="trailing" secondItem="L5B-4c-GNN" secondAttribute="trailing" id="sww-jj-r2u"/>
+                            <constraint firstAttribute="trailing" secondItem="L5B-4c-GNN" secondAttribute="trailing" id="vHB-mt-3XZ"/>
+                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="scoreView" destination="gCu-V3-8Gf" id="UyU-zi-Oda"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QP-iO-KP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1815.2" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1792.8" y="138.98050974512745"/>
         </scene>
-        <!--Liked View Controller-->
-        <scene sceneID="evi-nP-xhd">
+        <!--Liked Table View Controller-->
+        <scene sceneID="lqq-Hd-VQ1">
             <objects>
-                <viewController storyboardIdentifier="likedView" id="rv9-mx-S5X" customClass="LikedViewController" customModule="RestaurantIS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a3X-Lc-gXo"/>
-                        <viewControllerLayoutGuide type="bottom" id="XS7-lc-1UY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RxH-n7-oEO">
+                <tableViewController storyboardIdentifier="likedView" id="V0e-ZE-05h" customClass="LikedTableViewController" customModule="RestaurantIS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" id="nw0-4n-06j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gzb-dd-XX3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="u2F-PQ-clP">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u2F-PQ-clP" id="f6A-o1-8fx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vzo-ll-xMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LikedCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="LikedCell" rowHeight="200" id="k70-jd-Ib1" customClass="LikedTableViewCell" customModule="RestaurantIS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k70-jd-Ib1" id="DmU-9Y-sJ6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M3A-2T-fxT">
+                                            <rect key="frame" x="8" y="29" width="140" height="140"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBl-ZT-1rR">
+                                            <rect key="frame" x="156" y="29" width="211" height="69"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="hBl-ZT-1rR" id="Sdo-DC-80w"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="V0e-ZE-05h" id="01R-Bz-f3o"/>
+                            <outlet property="delegate" destination="V0e-ZE-05h" id="x9b-wd-Srr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="kQB-j0-5dV"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ca0-wE-HJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2519.1999999999998" y="138.98050974512745"/>
+            <point key="canvasLocation" x="2508" y="138.98050974512745"/>
         </scene>
     </scenes>
     <resources>
         <image name="background" width="368" height="654"/>
+        <image name="c" width="174" height="180"/>
+        <image name="ch" width="174" height="180"/>
+        <image name="x" width="174" height="180"/>
+        <image name="xh" width="174" height="180"/>
     </resources>
 </document>

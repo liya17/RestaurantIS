@@ -191,7 +191,7 @@ class RestaurantViewController: UIViewController {
     }
     
     func transferSegue() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedTableViewController
         self.present(vc, animated: true, completion: nil)
         //vc.tableViewCell.chosenNameLabel.text = "hello"
     }
@@ -227,7 +227,7 @@ class RestaurantViewController: UIViewController {
             if self.currentRestaurantView.center.x / self.view.bounds.maxX > 0.8 {
                 self.determineJudgement(true)
                 self.score = self.score + 1
-                self.scoreView.text = "Liked: \(self.score)"
+                //self.scoreView.text = "Liked: \(self.score)"
                 self.determineScore()
                 var currentName = self.currentRestaurantView.restaurantLabel.text
                 
