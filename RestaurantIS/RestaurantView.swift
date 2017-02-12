@@ -29,7 +29,7 @@ class RestaurantView: UIView {
     
     //constructor for object
     //what is going to happen in the panel
-    init(frame: CGRect, restaurant: String, /*image: String,*/ cuisine: String, price: Double, center: CGPoint) {
+    init(frame: CGRect, restaurant: String, image: String, cuisine: String, price: Double, center: CGPoint) {
         // Gives all the stuff Apple provides
         super.init(frame: frame)
         self.center = center
@@ -37,7 +37,7 @@ class RestaurantView: UIView {
         self.restaurant = restaurant
         self.cuisine = cuisine
         self.price = price
-        //self.image = image
+        self.image = image
         //self.restCuisine = restCuisine
        
         // Set the background to white
@@ -138,6 +138,11 @@ class RestaurantView: UIView {
         self.addSubview(priceLabel) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
         //-------------------------End Cuisine Label------------------------------------
+        
+        //-------------------------Start Image View------------------------------------
+        
+        
+        //-------------------------End Image View------------------------------------
 
     }
     

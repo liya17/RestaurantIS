@@ -16,6 +16,7 @@ class RestaurantViewController: UIViewController {
     var restaurantNamesArray = [String]()
     var restaurantCuisineArray = [String]()
     var restaurantPriceArray  = [Double]()
+    var restaurantImageArray = [String]()
     
     @IBOutlet weak var scoreView: UITextView!
     
@@ -78,10 +79,9 @@ class RestaurantViewController: UIViewController {
                                 // print(restaurant["name"] as? String ?? "null")
                                 
                                 self.restaurantNamesArray.append(restaurant["name"] as? String ?? "null")
- 
                                 self.restaurantCuisineArray.append(restaurant["cuisines"] as? String ?? "null")
-                                
                                 self.restaurantPriceArray.append(restaurant["average_cost_for_two"] as? Double ?? 0)
+                                self.restaurantImageArray.append(restaurant["featured_image"] as? String ?? "null")
 
                             }
                             // Display first restaurant
@@ -113,15 +113,17 @@ class RestaurantViewController: UIViewController {
             let restaurant = restaurantNamesArray[i]
             let cuisine = restaurantCuisineArray[i]
             let price = restaurantPriceArray[i]
+            let image = restaurantImageArray[i]
+            
             // print(restaurant)
             //for each question and answer, create this view
             //print(restaurant)
             currentRestaurantView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: restaurant,
+                image: image,
                 cuisine: cuisine,
                 price: price,
-                //image: image,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(currentRestaurantView)
@@ -175,7 +177,7 @@ class RestaurantViewController: UIViewController {
             var noMoreView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: "No More restaurants :(",
-                //image: "None",
+                image: "None",
                 cuisine: "None",
                 price: 0,
                 //answer: false,
