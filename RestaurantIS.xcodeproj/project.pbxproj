@@ -64,9 +64,9 @@
 			children = (
 				8D67B98F1E2D6C5E0081F608 /* AppDelegate.swift */,
 				8D67B9931E2D6C5E0081F608 /* Main.storyboard */,
-				8D67B9A41E2EA62D0081F608 /* RestaurantViewController.swift */,
 				8D7D1ADC1E4943E700C2F3D7 /* LikedTableViewController.swift */,
 				8D7D1ADE1E49447600C2F3D7 /* LikedTableViewCell.swift */,
+				8D67B9A41E2EA62D0081F608 /* RestaurantViewController.swift */,
 				8D67B9A61E2EA6AB0081F608 /* RestaurantView.swift */,
 				8D67B9991E2D6C5E0081F608 /* Assets.xcassets */,
 				8D67B99B1E2D6C5E0081F608 /* LaunchScreen.storyboard */,

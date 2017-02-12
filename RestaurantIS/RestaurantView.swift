@@ -114,13 +114,13 @@ class RestaurantView: UIView {
         
          //-------------------------Start Price Label------------------------------------
         priceLabel = UILabel()
-        let priceDouble : Double = price 
+        let priceDouble : Double = price / 2
         let priceString = String(priceDouble)
-        priceLabel.text = "$" + priceString
+        priceLabel.text = "$" + priceString + "0"
         
         priceLabel.frame = CGRect(
             //x: restaurantLabel.frame.minX + 215,
-            x: restaurantView.frame.maxX - 70,
+            x: restaurantView.frame.maxX - 80,
             y: restaurantView.frame.maxY - 6*self.imageMarginSpace,
             width: self.frame.width /*- (30 * self.imageMarginSpace)*/,
             height: self.frame.height - (70 * self.imageMarginSpace)
