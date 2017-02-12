@@ -19,14 +19,17 @@ class RestaurantView: UIView {
     var answer: Bool!
     var cuisine: String!
     var price: Double!
+    var image: String!
 
     var restaurantLabel: UILabel!
     var cuisineLabel: UILabel!
     var priceLabel: UILabel!
     
+    var imageView : UIImageView!
+    
     //constructor for object
     //what is going to happen in the panel
-    init(frame: CGRect, restaurant: String, cuisine: String, price: Double, center: CGPoint) {
+    init(frame: CGRect, restaurant: String, image: String, cuisine: String, price: Double, center: CGPoint) {
         // Gives all the stuff Apple provides
         super.init(frame: frame)
         self.center = center
@@ -34,6 +37,7 @@ class RestaurantView: UIView {
         self.restaurant = restaurant
         self.cuisine = cuisine
         self.price = price
+        self.image = image
         //self.restCuisine = restCuisine
        
         // Set the background to white

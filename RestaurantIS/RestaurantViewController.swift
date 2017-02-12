@@ -121,6 +121,7 @@ class RestaurantViewController: UIViewController {
                 restaurant: restaurant,
                 cuisine: cuisine,
                 price: price,
+                //image: image,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(currentRestaurantView)
@@ -174,6 +175,7 @@ class RestaurantViewController: UIViewController {
             var noMoreView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: "No More restaurants :(",
+                image: "None",
                 cuisine: "None",
                 price: 0,
                 //answer: false,
