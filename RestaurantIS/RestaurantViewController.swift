@@ -37,6 +37,8 @@ class RestaurantViewController: UIViewController {
     var restaurantViews: [RestaurantView] = []
     var currentRestaurantView: RestaurantView!
     
+    //var likedArray: [RestaurantView] = []
+    var likedArray: [String] = []
     // Create a variable called data.  (String, Bool) -> Statement, Answer
     
 //    var data: [(String)] = [
@@ -52,7 +54,7 @@ class RestaurantViewController: UIViewController {
 
     // ------------------------------START ZOMATO API ---------------------------------------
         let zomatoKey = "19f8f67d41d482999c498e28f05a22d1"
-        let centerLatitude = 40.773988, centerLongitude = -73.946084
+        let centerLatitude = 40.7905, centerLongitude = -73.9713
         let urlString = "https://developers.zomato.com/api/v2.1/search?&lat=\(centerLatitude)&lon=\(centerLongitude)";
         
         let config = URLSessionConfiguration.default
@@ -127,6 +129,10 @@ class RestaurantViewController: UIViewController {
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
             self.restaurantViews.append(currentRestaurantView)
+            
+            //self.likedArray.append(restaurant)
+            
+            //self.addToArray(String: restaurant)
         }
         
         //for all the restaurantViews add them to the panel
@@ -193,11 +199,27 @@ class RestaurantViewController: UIViewController {
         self.currentRestaurantView = self.restaurantViews.last!
         
     }
-    
+
+    var arr: [String] = []
     func transferSegue() {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedTableViewController
+//        self.present(vc, animated: true, completion: nil)
+        
+        //var newArray = vc.otherArray
+        
+        for i in 0...likedArray.count-1 {
+            arr.append(likedArray[i])
+        }
+//        print(vc.otherArray)
+        print(arr)
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedTableViewController
         self.present(vc, animated: true, completion: nil)
-        //vc.tableViewCell.chosenNameLabel.text = "hello"
+        
+        
+        //print(likedArray)
+        //let cell = self.storyboard?.instantiateTableViewControllerCell(withIdentifier: "LikedCell") as! LikedTableViewCell
+        
     }
     
     func transferInfo() {
@@ -211,6 +233,9 @@ class RestaurantViewController: UIViewController {
             refreshAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
                 print("Segue to next view controller")
                 self.transferSegue()
+                
+                //self.likedArray.append(/*self.currentRestaurantView.*/restaurant)
+                
             }))
             
             refreshAlert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -219,6 +244,11 @@ class RestaurantViewController: UIViewController {
             
             present(refreshAlert, animated: true, completion: nil)
         }
+    }
+    
+    func addToArray(String: String){
+        self.likedArray.append(String)
+        //print(likedArray)
     }
     
     
@@ -233,8 +263,12 @@ class RestaurantViewController: UIViewController {
                 self.score = self.score + 1
                 //self.scoreView.text = "Liked: \(self.score)"
                 self.determineScore()
-                var currentName = self.currentRestaurantView.restaurantLabel.text
-                
+                //var currentName = self.currentRestaurantView.restaurantLabel.text as String!
+                print (self.currentRestaurantView.restaurantLabel.text!)
+                //print(self.currentRestaurantView.restaurantLabel.text)
+                likedArray.append(self.currentRestaurantView.restaurantLabel.text!)
+                //print(likedArray)
+                //self.addToArray(String: currentName!)
                // self.currentRestaurantView.restaurantLabel
                 //self.transferInfo(info: currentName!)
                 //self.transferSegue()

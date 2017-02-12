@@ -10,15 +10,35 @@ import UIKit
 
 class LikedTableViewController: UITableViewController {
 
+    var otherArray = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(otherArray)
+//        for i in 0...otherArray.count-1 {
+//            // for (restaurant) in self.restaurantNamesArray {
+//
+//        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //self.tableView(UITableView, numberOfRowsInSection: 0)
+        
+        
     }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LikedCell", for: indexPath as IndexPath) as! LikedTableViewCell //1
+        
+        cell.nameLabel.text = "Hello World"
+        
+        return cell
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -94,13 +114,13 @@ class LikedTableViewController: UITableViewController {
 
 extension LikedTableViewController {
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "likedCell", for: indexPath as IndexPath) as! LikedTableViewCell //1
-        
-        cell.nameLabel.text = "Hello World"
-        
-        return cell
-    }
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "LikedCell", for: indexPath as IndexPath) as! LikedTableViewCell //1
+//        
+//        cell.nameLabel.text = "Hello World"
+//        
+//        return cell
+//    }
     
 //    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

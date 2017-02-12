@@ -161,36 +161,6 @@ class RestaurantView: UIView {
         let url = image
         self.load_image(urlString: url)
         
-//        let session = URLSession(configuration: .default)
-//        
-//        let downloadPicTask = session.dataTask(with: url!) { (data, response, error) in
-//            if let e = error {
-//                print("Error dowloading image: \(e)")
-//            } else {
-//                if let res = response as? HTTPURLResponse {
-//                    if let imageData = data {
-//                        let image = UIImage(data: imageData)
-//                    } else {
-//                        print("Couldn't get image: Image is nil")
-//                    }
-//                } else {
-//                    print("Couldn't get response code")
-//                }
-//            }
-//            }
-//        downloadPicTask.resume()
-        
-//        if url != nil {
-//            DispatchQueue.global().async {
-//                let myImage = try? UIImage(data: Data(contentsOf: url!))
-//                DispatchQueue.main.async {
-//                    if myImage != nil {
-//                        self.imageView.image = myImage!
-//                    }
-//                }
-//            }
-//        }
-        
         //-------------------------End Image View------------------------------------
     }
     required init(coder aDecoder: NSCoder) {

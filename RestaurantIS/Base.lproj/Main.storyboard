@@ -13,7 +13,7 @@
         <!--Restaurant View Controller-->
         <scene sceneID="v1R-Ji-UgR">
             <objects>
-                <viewController id="yUi-sC-er7" customClass="RestaurantViewController" customModule="RestaurantIS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="restView" id="yUi-sC-er7" customClass="RestaurantViewController" customModule="RestaurantIS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xd6-K5-wqF"/>
                         <viewControllerLayoutGuide type="bottom" id="jwb-JR-bbX"/>
@@ -85,7 +85,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M3A-2T-fxT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="c" translatesAutoresizingMaskIntoConstraints="NO" id="M3A-2T-fxT">
                                             <rect key="frame" x="8" y="29" width="140" height="140"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="140" id="tXk-4P-rag"/>
