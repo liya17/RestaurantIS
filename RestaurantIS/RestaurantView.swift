@@ -155,7 +155,7 @@ class RestaurantView: UIView {
         
         self.addSubview(imageView)
         
-        imageView.backgroundColor = UIColor.blue
+        imageView.backgroundColor = UIColor.white
         
 
         let url = image
@@ -242,7 +242,7 @@ class RestaurantView: UIView {
             request as URLRequest, queue: OperationQueue.main,
             completionHandler: {(response: URLResponse?,data: Data?,error: Error?) -> Void in
                 if error == nil {
-                    //self.imageView.image = UIImage(data: data!)
+                    self.imageView.image = UIImage(data: data!)
                 }
         })
         
