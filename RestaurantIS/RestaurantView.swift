@@ -29,7 +29,7 @@ class RestaurantView: UIView {
     
     //constructor for object
     //what is going to happen in the panel
-    init(frame: CGRect, restaurant: String, image: String, cuisine: String, price: Double, center: CGPoint) {
+    init(frame: CGRect, restaurant: String, /*image: String,*/ cuisine: String, price: Double, center: CGPoint) {
         // Gives all the stuff Apple provides
         super.init(frame: frame)
         self.center = center
@@ -37,7 +37,7 @@ class RestaurantView: UIView {
         self.restaurant = restaurant
         self.cuisine = cuisine
         self.price = price
-        self.image = image
+        //self.image = image
         //self.restCuisine = restCuisine
        
         // Set the background to white
@@ -84,8 +84,9 @@ class RestaurantView: UIView {
             height: self.frame.height - (70 * self.imageMarginSpace)
             ).integral
         
-        restaurantLabel.font = self.futura //font
-        restaurantLabel.font = restaurantLabel.font.withSize(20)
+        //restaurantLabel.font = self.futura //font
+        //restaurantLabel.font = restaurantLabel.font.withSize(20)
+        restaurantLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
         restaurantLabel.textColor = UIColor.black //text color
         //restaurantLabel.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 188/255.0, alpha: 1.0) //background color for text - red
         restaurantLabel.layer.shouldRasterize = true
@@ -106,8 +107,8 @@ class RestaurantView: UIView {
             height: self.frame.height - (70 * self.imageMarginSpace)
             ).integral
         
-        cuisineLabel.font = self.futura //font
-        cuisineLabel.font = cuisineLabel.font.withSize(20)
+        cuisineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20) //font
+        //cuisineLabel.font = cuisineLabel.font.withSize(20)
         cuisineLabel.textColor = UIColor.black //text color
         cuisineLabel.layer.shouldRasterize = true
         //cuisineLabel.backgroundColor = UIColor(red: 255.0/255.0, green: 186.0/255.0, blue: 188/255.0, alpha: 1.0) //background color for text - red
@@ -130,8 +131,8 @@ class RestaurantView: UIView {
             height: self.frame.height - (70 * self.imageMarginSpace)
             ).integral
         
-        priceLabel.font = self.futura //font
-        priceLabel.font = priceLabel.font.withSize(20)
+        priceLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20) //font
+        //priceLabel.font = priceLabel.font.withSize(20)
         priceLabel.textColor = UIColor.black //text color
         priceLabel.layer.shouldRasterize = true
         self.addSubview(priceLabel) //put text on the panel - layer

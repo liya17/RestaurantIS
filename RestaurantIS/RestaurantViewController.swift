@@ -175,7 +175,7 @@ class RestaurantViewController: UIViewController {
             var noMoreView = RestaurantView(
                 frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
                 restaurant: "No More restaurants :(",
-                image: "None",
+                //image: "None",
                 cuisine: "None",
                 price: 0,
                 //answer: false,
