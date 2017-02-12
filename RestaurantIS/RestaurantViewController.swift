@@ -200,20 +200,12 @@ class RestaurantViewController: UIViewController {
         
     }
 
-    var arr: [String] = []
     func transferSegue() {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedTableViewController
-//        self.present(vc, animated: true, completion: nil)
-        
-        //var newArray = vc.otherArray
-        
-        for i in 0...likedArray.count-1 {
-            arr.append(likedArray[i])
-        }
-//        print(vc.otherArray)
-        print(arr)
+
+        print("likedArray \(likedArray)")
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedTableViewController
+        vc.otherArray = likedArray
         self.present(vc, animated: true, completion: nil)
         
         

@@ -15,7 +15,7 @@ class LikedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(otherArray)
+        print("otherArray: \(otherArray)")
 //        for i in 0...otherArray.count-1 {
 //            // for (restaurant) in self.restaurantNamesArray {
 //
