@@ -31,15 +31,21 @@ class LikedTableViewController: UITableViewController {
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LikedCell", for: indexPath as IndexPath) as! LikedTableViewCell //1
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "LikedCell", for: indexPath as IndexPath) as! LikedTableViewCell //1
+//        
+//        cell.nameLabel.text = "Hello World"
+//        
+//        return cell
+//    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        cell.nameLabel.text = "Hello World"
-        
-        return cell
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
-
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,21 +55,22 @@ class LikedTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return otherArray.count
+    }
 
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "likedCell", for: indexPath) as? LikedTableViewCell
-//
-//        // Configure the cell...
-//        
-//        return cell
-//    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LikedCell", for: indexPath) as? LikedTableViewCell
+
+        // Configure the cell...
+        let row = indexPath.row
+        cell?.nameLabel.text = otherArray[row]
+        return cell!
+    }
     
     /*
     // Override to support conditional editing of the table view.
@@ -110,21 +117,4 @@ class LikedTableViewController: UITableViewController {
     }
     */
 
-}
-
-extension LikedTableViewController {
-    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "LikedCell", for: indexPath as IndexPath) as! LikedTableViewCell //1
-//        
-//        cell.nameLabel.text = "Hello World"
-//        
-//        return cell
-//    }
-    
-//    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
 }
