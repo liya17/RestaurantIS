@@ -140,12 +140,59 @@ class RestaurantView: UIView {
         //-------------------------End Cuisine Label------------------------------------
         
         //-------------------------Start Image View------------------------------------
+        //let url = URL(string: image)
+        //print(url)
         
+        imageView = UIImageView()
+        
+        imageView.frame = CGRect(
+            //x: restaurantLabel.frame.minX + 215,
+            x: restaurantView.frame.minX + 10,
+            y: restaurantView.frame.minY + 10,
+            width: self.frame.width - 30 /*- (30 * self.imageMarginSpace)*/,
+            height: self.frame.height - 80
+            ).integral
+        
+        self.addSubview(imageView)
+        
+        imageView.backgroundColor = UIColor.blue
+        
+
+        let url = image
+        self.load_image(urlString: url)
+        
+//        let session = URLSession(configuration: .default)
+//        
+//        let downloadPicTask = session.dataTask(with: url!) { (data, response, error) in
+//            if let e = error {
+//                print("Error dowloading image: \(e)")
+//            } else {
+//                if let res = response as? HTTPURLResponse {
+//                    if let imageData = data {
+//                        let image = UIImage(data: imageData)
+//                    } else {
+//                        print("Couldn't get image: Image is nil")
+//                    }
+//                } else {
+//                    print("Couldn't get response code")
+//                }
+//            }
+//            }
+//        downloadPicTask.resume()
+        
+//        if url != nil {
+//            DispatchQueue.global().async {
+//                let myImage = try? UIImage(data: Data(contentsOf: url!))
+//                DispatchQueue.main.async {
+//                    if myImage != nil {
+//                        self.imageView.image = myImage!
+//                    }
+//                }
+//            }
+//        }
         
         //-------------------------End Image View------------------------------------
-
     }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
@@ -183,6 +230,21 @@ class RestaurantView: UIView {
         }, completion: { finished in
             print("Finished Animation")}
         )
+        
+    }
+    
+    func load_image(urlString:String)
+    {
+        
+        var imgURL: NSURL = NSURL(string: urlString)!
+        let request: NSURLRequest = NSURLRequest(url: imgURL as URL)
+        NSURLConnection.sendAsynchronousRequest(
+            request as URLRequest, queue: OperationQueue.main,
+            completionHandler: {(response: URLResponse?,data: Data?,error: Error?) -> Void in
+                if error == nil {
+                    //self.imageView.image = UIImage(data: data!)
+                }
+        })
         
     }
 }
