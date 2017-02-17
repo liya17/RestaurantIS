@@ -11,11 +11,14 @@ import UIKit
 class LikedTableViewController: UITableViewController {
 
     var otherArray = [String]()
+    
+    var oImageArray = [UIImage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("otherArray: \(otherArray)")
+        print("image array: \(oImageArray)")
 //        for i in 0...otherArray.count-1 {
 //            // for (restaurant) in self.restaurantNamesArray {
 //
@@ -69,8 +72,10 @@ class LikedTableViewController: UITableViewController {
         // Configure the cell...
         let row = indexPath.row
         cell?.nameLabel.text = otherArray[row]
+        cell?.chosenImageView?.image = oImageArray[row]
         return cell!
     }
+    
     
     /*
     // Override to support conditional editing of the table view.

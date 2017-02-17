@@ -17,6 +17,7 @@ class RestaurantViewController: UIViewController {
     var restaurantCuisineArray = [String]()
     var restaurantPriceArray  = [Double]()
     var restaurantImageArray = [String]()
+    var likedImageArray = [UIImage]()
     
     @IBOutlet weak var scoreView: UITextView!
     
@@ -54,7 +55,7 @@ class RestaurantViewController: UIViewController {
 
     // ------------------------------START ZOMATO API ---------------------------------------
         let zomatoKey = "19f8f67d41d482999c498e28f05a22d1"
-        let centerLatitude = 40.7905, centerLongitude = -73.9713
+        let centerLatitude = 40.7740, centerLongitude = -73.9461
         let urlString = "https://developers.zomato.com/api/v2.1/search?&lat=\(centerLatitude)&lon=\(centerLongitude)";
         
         let config = URLSessionConfiguration.default
@@ -206,6 +207,7 @@ class RestaurantViewController: UIViewController {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedTableViewController
         vc.otherArray = likedArray
+        vc.oImageArray = likedImageArray
         self.present(vc, animated: true, completion: nil)
         
         
@@ -259,6 +261,11 @@ class RestaurantViewController: UIViewController {
                 print (self.currentRestaurantView.restaurantLabel.text!)
                 //print(self.currentRestaurantView.restaurantLabel.text)
                 likedArray.append(self.currentRestaurantView.restaurantLabel.text!)
+                
+                likedImageArray.append(self.currentRestaurantView.imageView.image!)
+                //print(likedImageArray)
+                
+                
                 //print(likedArray)
                 //self.addToArray(String: currentName!)
                // self.currentRestaurantView.restaurantLabel
