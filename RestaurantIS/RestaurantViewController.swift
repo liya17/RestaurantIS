@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
-class RestaurantViewController: UIViewController {
+class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
 
     var score: Int!
     var done: Bool = false
+    
+    let locationManager = CLLocationManager() // Add this statement
     
     var restaurantNamesArray = [String]()
     var restaurantCuisineArray = [String]()
@@ -49,10 +52,19 @@ class RestaurantViewController: UIViewController {
     var cLikedArray: [String] = []
     // Create a variable called data.  (String, Bool) -> Statement, Answer
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    // ------------------------------START ZOMATO API ---------------------------------------
+        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
+        //--------------------------START ZOMATO API ---------------------------------------
+        
         let zomatoKey = "19f8f67d41d482999c498e28f05a22d1"
         let centerLatitude = 40.7740, centerLongitude = -73.9461
         let urlString = "https://developers.zomato.com/api/v2.1/search?&lat=\(centerLatitude)&lon=\(centerLongitude)";
@@ -106,7 +118,9 @@ class RestaurantViewController: UIViewController {
         task.resume()
     // -----------------------------------END ZOMATO API------------------------------------
     }
-
+    
+    
+    
     func panels() {
         //print("self.panels called")
         // Start with a 0 score

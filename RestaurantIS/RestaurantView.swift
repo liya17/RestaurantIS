@@ -53,7 +53,7 @@ class RestaurantView: UIView {
         
         //------------------------Start Text View------------------------------------
         restaurantView = UITextView()
-        restaurantView.backgroundColor = UIColor(red: 162.0/255.0, green: 222.0/255.0, blue: 208/255.0, alpha: 1.0) //background color for text - red
+        restaurantView.backgroundColor = UIColor(red: 215/255.0, green: 246/255.0, blue: 252/255.0, alpha: 1.0) //background color for text - red
         
         //fit within the frame
         restaurantView.frame = CGRect(
@@ -64,6 +64,7 @@ class RestaurantView: UIView {
             ).integral
         
         restaurantView.layer.shouldRasterize = true
+        restaurantView.layer.cornerRadius = 5
         self.addSubview(restaurantView) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
         //--------------------------End Image View------------------------------------
@@ -145,6 +146,9 @@ class RestaurantView: UIView {
         
         imageView = UIImageView()
         
+        var eImage : UIImage = UIImage(named:"image")!
+        imageView = UIImageView(image: eImage)
+        
         imageView.frame = CGRect(
             //x: restaurantLabel.frame.minX + 215,
             x: restaurantView.frame.minX + 10,
@@ -157,8 +161,8 @@ class RestaurantView: UIView {
         
         imageView.backgroundColor = UIColor.white
         
-
         let url = image
+        
         self.load_image(urlString: url)
         
         //-------------------------End Image View------------------------------------
