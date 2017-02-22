@@ -10,6 +10,7 @@ import UIKit
 
 class LikedTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var typeLabel: UILabel!
 
     @IBOutlet weak var nameLabel: UILabel!
     

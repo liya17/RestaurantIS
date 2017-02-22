@@ -13,12 +13,17 @@ class LikedTableViewController: UITableViewController {
     var otherArray = [String]()
     
     var oImageArray = [UIImage]()
+    
+    var cuisineArray = [String]()
+    
+    var valueToPass:String!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("otherArray: \(otherArray)")
-        print("image array: \(oImageArray)")
+        //print("otherArray: \(otherArray)")
+        //print("image array: \(oImageArray)")
 //        for i in 0...otherArray.count-1 {
 //            // for (restaurant) in self.restaurantNamesArray {
 //
@@ -72,10 +77,46 @@ class LikedTableViewController: UITableViewController {
         // Configure the cell...
         let row = indexPath.row
         cell?.nameLabel.text = otherArray[row]
+        cell?.typeLabel.text = cuisineArray[row]
+        
+//        let destinationVC = InfoViewController()
+//        destinationVC.name.text = otherArray[row]
+        // Let's assume that the segue name is called playerSegue
+        // This will perform the segue and pre-load the variable for you to use
+        //destinationVC.performSegue(withIdentifier: "displayRestaurant", sender: self)
+        
         cell?.chosenImageView?.image = oImageArray[row]
+        
         return cell!
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPathVal: NSIndexPath = tableView.indexPathForSelectedRow! as NSIndexPath
+
+        let currentCell = tableView.cellForRow(at: indexPathVal as IndexPath) as! LikedTableViewCell!;
+        
+        //Storing the data to a string from the selected cell
+        valueToPass = currentCell?.nameLabel.text!
+        print(valueToPass)
+        //Now here I am performing the segue action after cell selection to the other view controller by using the segue Identifier Name
+        self.performSegue(withIdentifier: "displayRestaurant", sender: self)
+
+
+    }
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        //Here i am checking the Segue and Saving the data to an array on the next view Controller also sending it to the next view COntroller
+        if segue.identifier == "displayRestaurant"{
+            //Creating an object of the second View controller
+            let controller = segue.destination as! InfoViewController
+            //Sending the data here
+            controller.name.text = valueToPass
+            
+            print("hello \(valueToPass)")
+            
+        }
+    }
     
     /*
     // Override to support conditional editing of the table view.

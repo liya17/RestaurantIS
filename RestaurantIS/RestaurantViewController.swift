@@ -19,14 +19,19 @@ class RestaurantViewController: UIViewController {
     var restaurantImageArray = [String]()
     var likedImageArray = [UIImage]()
     
-    @IBOutlet weak var scoreView: UITextView!
-    
+    var restaurantMenuArray = [String]()
+    var restaurantWebsiteArray = [String]()
+    var restaurantRatingArray = [String]()
+        
     @IBAction func likePressed(_ sender: Any) {
         print("This button is pressed")
         self.determineJudgement(true)
         self.score = self.score + 1
 //self.scoreView.text = "Liked: \(self.score)"
         self.determineScore()
+        likedArray.append(self.currentRestaurantView.restaurantLabel.text!)
+        cLikedArray.append(self.currentRestaurantView.cuisineLabel.text!)
+
         
     }
     
@@ -40,15 +45,9 @@ class RestaurantViewController: UIViewController {
     
     //var likedArray: [RestaurantView] = []
     var likedArray: [String] = []
+    
+    var cLikedArray: [String] = []
     // Create a variable called data.  (String, Bool) -> Statement, Answer
-    
-//    var data: [(String)] = [
-//        (""),
-//        (""),
-//    ]
-    
-    //var restaurantList: [(String,Bool)] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +85,10 @@ class RestaurantViewController: UIViewController {
                                 self.restaurantPriceArray.append(restaurant["average_cost_for_two"] as? Double ?? 0)
                                 self.restaurantImageArray.append(restaurant["featured_image"] as? String ?? "null")
 
+                                self.restaurantMenuArray.append(restaurant["menu_url"] as? String ?? "null")
+
                             }
+                            
                             // Display first restaurant
                             //print("Data loaded, proceeding")
                             //self.data = self.restaurantNamesArray
@@ -106,7 +108,7 @@ class RestaurantViewController: UIViewController {
     }
 
     func panels() {
-        print("self.panels called")
+        //print("self.panels called")
         // Start with a 0 score
         score = 0
         
@@ -140,24 +142,6 @@ class RestaurantViewController: UIViewController {
         for restaurantView in self.restaurantViews {
             self.view.addSubview(restaurantView)
         }
-        /**
-        for (cuisine) in self.restaurantCuisineArray {
-            // print(cuisine)
-            //for each question and answer, create this view
-            //print(cuisine)
-            currentRestaurantView = RestaurantView(
-                frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
-                restaurant: cuisine,
-                cuisine: cuisine,
-                center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
-            )
-            self.restaurantViews.append(currentRestaurantView)
-        }
-        
-        //for all the restaurantViews add them to the panel
-        for restaurantView in self.restaurantViews {
-            self.view.addSubview(restaurantView)
-        } **/
         
         // Add Pan Gesture Recognizer
         let pan = UIPanGestureRecognizer(target: self, action: #selector(RestaurantViewController.handlePan(_:)))
@@ -166,12 +150,6 @@ class RestaurantViewController: UIViewController {
     
     //when the answer is picked...
     func determineJudgement(_ answer: Bool) {
-        
-        // If its the right answer, set the score
-//        if self.currentRestaurantView.answer == answer && !self.done{
-//            self.score = self.score + 1
-//            self.scoreView.text = "Liked: \(self.score)" //adding text to text field
-//        }
         
         // Run the swipe animation
         self.currentRestaurantView.swipe(answer)
@@ -208,15 +186,8 @@ class RestaurantViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "likedView") as! LikedTableViewController
         vc.otherArray = likedArray
         vc.oImageArray = likedImageArray
+        vc.cuisineArray = cLikedArray
         self.present(vc, animated: true, completion: nil)
-        
-        
-        //print(likedArray)
-        //let cell = self.storyboard?.instantiateTableViewControllerCell(withIdentifier: "LikedCell") as! LikedTableViewCell
-        
-    }
-    
-    func transferInfo() {
         
     }
     
@@ -240,12 +211,6 @@ class RestaurantViewController: UIViewController {
         }
     }
     
-    func addToArray(String: String){
-        self.likedArray.append(String)
-        //print(likedArray)
-    }
-    
-    
     func handlePan(_ gesture: UIPanGestureRecognizer) {
         // Is this gesture state finished??
         if gesture.state == UIGestureRecognizerState.ended {
@@ -255,22 +220,12 @@ class RestaurantViewController: UIViewController {
             if self.currentRestaurantView.center.x / self.view.bounds.maxX > 0.8 {
                 self.determineJudgement(true)
                 self.score = self.score + 1
-                //self.scoreView.text = "Liked: \(self.score)"
+
                 self.determineScore()
-                //var currentName = self.currentRestaurantView.restaurantLabel.text as String!
-                print (self.currentRestaurantView.restaurantLabel.text!)
-                //print(self.currentRestaurantView.restaurantLabel.text)
+
                 likedArray.append(self.currentRestaurantView.restaurantLabel.text!)
+                cLikedArray.append(self.currentRestaurantView.cuisineLabel.text!)
                 
-                likedImageArray.append(self.currentRestaurantView.imageView.image!)
-                //print(likedImageArray)
-                
-                
-                //print(likedArray)
-                //self.addToArray(String: currentName!)
-               // self.currentRestaurantView.restaurantLabel
-                //self.transferInfo(info: currentName!)
-                //self.transferSegue()
             }
             else if self.currentRestaurantView.center.x / self.view.bounds.maxX < 0.2 {
                 self.determineJudgement(false)
