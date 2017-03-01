@@ -99,6 +99,9 @@ class LikedTableViewController: UITableViewController {
         valueToPass = currentCell?.nameLabel.text!
         print(valueToPass)
         //Now here I am performing the segue action after cell selection to the other view controller by using the segue Identifier Name
+        
+        //super.prepareForSegue(segue, sender: sender)
+        performSegue(withIdentifier: "displayRestaurant", sender: indexPathVal)
         self.performSegue(withIdentifier: "displayRestaurant", sender: self)
 
 

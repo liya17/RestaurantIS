@@ -24,6 +24,8 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var reviews: UILabel!
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

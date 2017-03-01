@@ -53,18 +53,18 @@ class RestaurantView: UIView {
         
         //------------------------Start Text View------------------------------------
         restaurantView = UITextView()
-        restaurantView.backgroundColor = UIColor(red: 215/255.0, green: 246/255.0, blue: 252/255.0, alpha: 1.0) //background color for text - red
+        restaurantView.backgroundColor = UIColor(red: 241/255.0, green: 112/255.0, blue: 238/255.0, alpha: 1.0) //background color for text - red
         
         //fit within the frame
         restaurantView.frame = CGRect(
-            x: 0.0 + self.imageMarginSpace,
+            x: 0.0 - self.imageMarginSpace,
             y: 60.0 + self.imageMarginSpace,
-            width: self.frame.width - (2 * self.imageMarginSpace),
-            height: self.frame.height - (2 * self.imageMarginSpace)
+            width: self.frame.width - (2 * self.imageMarginSpace) + 20,
+            height: self.frame.height - (2 * self.imageMarginSpace) + 20
             ).integral
         
         restaurantView.layer.shouldRasterize = true
-        restaurantView.layer.cornerRadius = 5
+        restaurantView.layer.cornerRadius = 10
         self.addSubview(restaurantView) //put text on the panel - layer
         self.applyShadow() //apply shadow (function below)
         //--------------------------End Image View------------------------------------
@@ -153,13 +153,16 @@ class RestaurantView: UIView {
             //x: restaurantLabel.frame.minX + 215,
             x: restaurantView.frame.minX + 10,
             y: restaurantView.frame.minY + 10,
-            width: self.frame.width - 30 /*- (30 * self.imageMarginSpace)*/,
-            height: self.frame.height - 80
+            width: self.frame.width - 30 + 20/*- (30 * self.imageMarginSpace)*/,
+            height: self.frame.height - 80 + 20
             ).integral
         
         self.addSubview(imageView)
         
         imageView.backgroundColor = UIColor.white
+        
+        imageView.layer.cornerRadius = 10
+
         
         let url = image
         
