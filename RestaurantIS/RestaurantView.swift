@@ -53,7 +53,7 @@ class RestaurantView: UIView {
         
         //------------------------Start Text View------------------------------------
         restaurantView = UITextView()
-        restaurantView.backgroundColor = UIColor(red: 241/255.0, green: 112/255.0, blue: 238/255.0, alpha: 1.0) //background color for text - red
+        restaurantView.backgroundColor = UIColor(red: 183/255.0, green: 223/255.0, blue: 241/255.0, alpha: 1.0) //background color for text - red
         
         //fit within the frame
         restaurantView.frame = CGRect(
