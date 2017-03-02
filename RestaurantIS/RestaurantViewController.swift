@@ -25,15 +25,15 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
     var restaurantMenuArray = [String]()
     var restaurantWebsiteArray = [String]()
     var restaurantRatingArray = [String]()
-        
+    
     @IBAction func likePressed(_ sender: Any) {
         print("This button is pressed")
         self.determineJudgement(true)
         self.score = self.score + 1
 //self.scoreView.text = "Liked: \(self.score)"
         self.determineScore()
-        likedArray.append(self.currentRestaurantView.restaurantLabel.text!)
-        cLikedArray.append(self.currentRestaurantView.cuisineLabel.text!)
+        likedArray.append(self.activeView.restaurantLabel.text!)
+        cLikedArray.append(self.activeView.cuisineLabel.text!)
 
         
     }
@@ -45,6 +45,8 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
     
     var restaurantViews: [RestaurantView] = []
     var currentRestaurantView: RestaurantView!
+    
+    var activeView: RestaurantView!
     
     //var likedArray: [RestaurantView] = []
     var likedArray: [String] = []
@@ -145,7 +147,20 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
                 price: price,
                 center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
             )
+            
+            activeView = RestaurantView(
+                frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width),
+                restaurant: restaurant,
+                image: image,
+                cuisine: cuisine,
+                price: price,
+                center: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 3)
+            )
+            
+            
             self.restaurantViews.append(currentRestaurantView)
+            
+            
             
             //self.likedArray.append(restaurant)
             
@@ -166,7 +181,7 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
     func determineJudgement(_ answer: Bool) {
         
         // Run the swipe animation
-        self.currentRestaurantView.swipe(answer)
+        self.activeView.swipe(answer)
         
         // Handle when we have no more matches
         self.restaurantViews.remove(at: self.restaurantViews.count - 1)
@@ -227,18 +242,21 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
     
     func handlePan(_ gesture: UIPanGestureRecognizer) {
         // Is this gesture state finished??
+        
+        self.activeView = currentRestaurantView
+        
         if gesture.state == UIGestureRecognizerState.ended {
             // Determine if we need to swipe off or return to center - did the user lift his/her finger up? if so where?
             let location = gesture.location(in: self.view)
             //did they move their finger enough
-            if self.currentRestaurantView.center.x / self.view.bounds.maxX > 0.8 {
+            if self.activeView.center.x / self.view.bounds.maxX > 0.8 {
                 self.determineJudgement(true)
                 self.score = self.score + 1
 
                 self.determineScore()
 
-                likedArray.append(self.currentRestaurantView.restaurantLabel.text!)
-                cLikedArray.append(self.currentRestaurantView.cuisineLabel.text!)
+                likedArray.append(self.activeView.restaurantLabel.text!)
+                cLikedArray.append(self.activeView.cuisineLabel.text!)
                 
             }
             else if self.currentRestaurantView.center.x / self.view.bounds.maxX < 0.2 {
