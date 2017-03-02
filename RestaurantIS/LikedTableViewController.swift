@@ -85,7 +85,12 @@ class LikedTableViewController: UITableViewController {
         // This will perform the segue and pre-load the variable for you to use
         //destinationVC.performSegue(withIdentifier: "displayRestaurant", sender: self)
         
-        cell?.chosenImageView?.image = oImageArray[row]
+        //print(oImageArray[row])
+        
+        
+//        if oImageArray[row] != nil {
+//            cell?.chosenImageView?.image = oImageArray[row]
+//        }
         
         return cell!
     }
