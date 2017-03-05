@@ -34,7 +34,6 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
         self.determineScore()
         likedArray.append(self.activeView.restaurantLabel.text!)
         cLikedArray.append(self.activeView.cuisineLabel.text!)
-
         
     }
     
